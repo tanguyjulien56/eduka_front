@@ -1,3 +1,31 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #fcfcfc;
+}
+.nav-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.nav-link.active .nav-icon {
+  color: #0fa3b1; /* couleur lorsque le lien est actif */
+}
+
+.nav-link-avatar.active .nav-avatar {
+  border: 4px solid #0fa3b1; /* bordure par défaut */
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.toggle_is_active {
+  color: #0fa3b1;
+  border-bottom: 2px solid #0fa3b1;
+}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
