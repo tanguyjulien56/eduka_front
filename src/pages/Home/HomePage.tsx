@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NavToogle from "../../components/NavBar/NavToogle";
-import AllEvent from "./AllEvents";
-import ForYouEvent from "./ForYouEvent";
+import EventsPage from "../Event/EventsPage";
+import EventsUserPage from "../Event/EventsUserPage";
 
 export default function HomePage() {
   const [selectedTab, setSelectedTab] = useState("ForYou");
@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <div className="pb-20 ">
       <NavToogle onTabChange={handleTabChange} activeTab={selectedTab} />
-      {selectedTab === "ForYou" ? <ForYouEvent /> : <AllEvent />}
+      {selectedTab === "ForYou" ? <EventsUserPage /> : <EventsPage />}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { Avatar, Button, Card, IconButton } from "@mui/material";
 import { useEffect, useRef } from "react";
-import FormatRelativeDate from "./FormatRelativeDate";
+import FormatRelativeDate from "../../utils/CalculRelative/FormatRelativeDate";
 
 export default function CardEvent({ event }) {
   const textRef = useRef<HTMLDivElement>(null);

@@ -103,7 +103,7 @@ const events = [
   },
 ];
 
-export default function ForYouEvent() {
+export default function EventsPage() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {events.map((event, index) => (
