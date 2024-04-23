@@ -9,7 +9,7 @@ import HomePage from "./pages/Home/HomePage";
 import NotifPage from "./pages/NotifPage/NotifPage";
 import ProfilPage from "./pages/Profil/ProfilPage";
 import SearchPage from "./pages/Search/SearchPage";
-import NotFoundPage from "./utils/Not FoundPage";
+import NotFoundPage from "./utils/NotFoundPage";
 
 function App() {
   return (

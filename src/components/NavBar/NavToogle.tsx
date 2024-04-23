@@ -3,7 +3,13 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 
-export default function NavToogle({ onTabChange, activeTab }) {
+interface NavTooglePropsInterface {
+  onTabChange: (tab: string) => void;
+  activeTab: string;
+}
+
+export default function NavToogle(props: NavTooglePropsInterface) {
+  const { onTabChange, activeTab } = props;
   const [isFixed, setIsFixed] = useState(false);
 
   useEffect(() => {
