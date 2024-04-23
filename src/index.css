@@ -29,3 +29,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-toggle-link:hover {
+  cursor: pointer;
+}

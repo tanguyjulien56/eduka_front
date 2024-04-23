@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
-    <nav className="fixed bottom-0 bg-white flex justify-between w-full py-2 px-10 items-center border-t border-gray-100">
+    <nav className="fixed bottom-0 bg-white flex justify-between w-full py-2 px-10 items-center border-t border-gray-100 lg:hidden">
       <NavLink to="/" className="nav-link">
         <IconButton aria-label="home" size="large">
           <HomeIcon className="nav-icon" sx={{ width: 32, height: 32 }} />
@@ -20,7 +20,7 @@ export default function NavBar() {
           />
         </IconButton>
       </NavLink>
-      <NavLink to="/search" className="nav-link">
+      <NavLink to="/search" className="nav-link ">
         <IconButton aria-label="search" size="large">
           <SearchIcon className="nav-icon" sx={{ width: 32, height: 32 }} />
         </IconButton>

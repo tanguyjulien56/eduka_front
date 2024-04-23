@@ -1,9 +1,11 @@
-import { Alert } from "flowbite-react";
+import NavTop from "../../components/NavBar/NavTop";
+import NavTopLarge from "../../components/NavBar/NavTopLarge";
 
 export default function NotifPage() {
   return (
     <>
-      <Alert> coucou </Alert>
+      <NavTop />
+      <NavTopLarge />
     </>
   );
 }

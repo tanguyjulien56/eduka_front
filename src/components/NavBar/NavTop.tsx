@@ -19,9 +19,8 @@ export default function NavBar() {
   }, [prevScrollPos]);
 
   return (
-    <>
-      <div className="h-20" />{" "}
-      {/* Espace réservé pour compenser la hauteur de la barre de navigation */}
+    <div className="lg:hidden">
+      <div className="h-20 " />
       <nav
         className={`fixed top-0 bg-white left-0 right-0 w-full flex justify-end items-center py-5 px-4 transition-transform duration-300 ${
           visible
@@ -41,6 +40,6 @@ export default function NavBar() {
           </IconButton>
         </section>
       </nav>
-    </>
+    </div>
   );
 }
