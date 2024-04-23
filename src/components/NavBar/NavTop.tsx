@@ -1,7 +1,7 @@
-import ControlPointIcon from "@mui/icons-material/ControlPoint";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { IconButton } from "@mui/material";
+
+import { Avatar } from "@mui/material";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
@@ -32,12 +32,13 @@ export default function NavBar() {
           <img src="./public/logo.png" alt="eduka" />
         </section>
         <section>
-          <IconButton aria-label="delete" size="large">
-            <FilterAltIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton aria-label="delete" size="large">
-            <ControlPointIcon fontSize="inherit" />
-          </IconButton>
+        <NavLink to="/profil" className="nav-link-avatar">
+        <Avatar
+          alt="Cindy Baker"
+          src="/public/profil.png"
+          className="nav-avatar"
+        />
+      </NavLink>
         </section>
       </nav>
     </div>
