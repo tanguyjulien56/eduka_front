@@ -26,7 +26,7 @@ export default function NavToogle(props: NavTooglePropsInterface) {
 
   return (
     <nav
-      className={` flex justify-between items-end text-sm text-gray-500 bg-white dark:text-gray-400 md:px-6 pt-5 border-gray-100 shadow-sm  ${
+      className={` flex justify-between items-end text-sm text-gray-500 bg-white dark:text-gray-400 md:px-6 pt-8 border-gray-100 shadow-sm  ${
         isFixed ? "z-50  fixed top-0 left-0 right-0" : ""
       }`}
     >
