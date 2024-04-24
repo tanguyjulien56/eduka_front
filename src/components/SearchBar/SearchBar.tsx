@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+interface SearchBarPropsInterface {
+  handleSearch: (query: string) => void;
+}
 
-export default function SearchBar({ handleSearch }) {
-  const [isFixed, setIsFixed] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [noResults, setNoResults] = useState(false);
+export default function SearchBar(props: SearchBarPropsInterface) {
+  const { handleSearch } = props;
+  const [isFixed, setIsFixed] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [noResults] = useState<boolean>(false);
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-    handleSearch(event.target.value); // Appeler handleSearch à chaque modification de la valeur de la recherche
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    handleSearch(e.target.value);
   };
 
   useEffect(() => {

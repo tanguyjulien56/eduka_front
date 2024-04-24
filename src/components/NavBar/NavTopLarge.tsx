@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
-  const [prevScrollPos, setPrevScrollPos] = useState(window.pageYOffset);
-  const [visible, setVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+  const [visible, setVisible] = useState<boolean>(true);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+    const handleScroll = (): void => {
+      const currentScrollPos = window.scrollY;
       setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
       setPrevScrollPos(currentScrollPos);
     };

@@ -1,18 +1,18 @@
 import { useState } from "react";
-import NavToogle from "../../components/NavBar/NavToogle";
+import NavToggle from "../../components/NavBar/NavToggle";
 import EventsPage from "../Event/EventsPage";
 import EventsUserPage from "../Event/EventsUserPage";
 
 export default function HomePage() {
-  const [selectedTab, setSelectedTab] = useState("ForYou");
+  const [selectedTab, setSelectedTab] = useState<string>("ForYou");
 
-  const handleTabChange = (tab: any) => {
+  const handleTabChange = (tab: string) => {
     setSelectedTab(tab);
   };
 
   return (
     <div className="pb-20 ">
-      <NavToogle onTabChange={handleTabChange} activeTab={selectedTab} />
+      <NavToggle onTabChange={handleTabChange} activeTab={selectedTab} />
       {selectedTab === "ForYou" ? <EventsUserPage /> : <EventsPage />}
     </div>
   );

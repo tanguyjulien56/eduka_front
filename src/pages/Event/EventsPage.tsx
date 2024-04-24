@@ -1,6 +1,7 @@
 import CardEvent from "../../components/Card/CardEvent";
+import eventInterface from "../../services/interfaces/event";
 
-const events = [
+const events : eventInterface[] = [
   {
     name: "Jean-Claude",
     title: "Fête d'anniversaire de Pierre",
