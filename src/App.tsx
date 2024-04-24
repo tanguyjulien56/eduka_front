@@ -3,7 +3,7 @@ import "./App.css";
 import { HomePageSchool } from "./pages/HomePageSchool";
 import { SchoolCreateUser } from "./pages/SchoolCreateUser";
 import { ParentSignUpPage } from "./pages/ParentSignUpPage";
-
+import { TeacherSignUpPage } from "./pages/TeacherSignUpPage";
 function App() {
   return (
     <div>
@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<HomePageSchool />} />
         <Route path="/SchoolCreateUser" element={<SchoolCreateUser />} />
         <Route path="/ParentSignUpPage" element={<ParentSignUpPage />} />
+        <Route path="/TeacherSignUpPage" element={<TeacherSignUpPage />} />
       </Routes>
     </div>
   );

@@ -1,11 +1,10 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { date, object, string } from 'yup';
-import { OrangeFullButton } from '../Button/CustomButton';
-import AddCHildButton from '../Button/ButtonAddChild';
-import ButtonRemoveChild from '../Button/ButtonRemoveCHild';
+import { BlueFullButton } from '../Button/CustomButton';
+import AddDisciplineButton from '../Button/ButtonAddDiscipline';
 
-interface FormAddParentInterface {
+interface FormAddTeacherInterface {
     firstName: string;
     lastName: string;
     email: string;
@@ -13,9 +12,9 @@ interface FormAddParentInterface {
     birthday: string;
     classChild: string;
 }
-export const FormAddParent = () => {
+export const FormAddTeacher = () => {
 
-    const [parents, setParents] = useState<FormAddParentInterface>({
+    const [teachers, setTeachers] = useState<FormAddTeacherInterface>({
         firstName: '',
         lastName: '',
         email: '',
@@ -34,7 +33,7 @@ export const FormAddParent = () => {
     })
 
     const formik = useFormik({
-        initialValues: parents,
+        initialValues: teachers,
         validationSchema: userSchema,
 
 
@@ -64,35 +63,13 @@ export const FormAddParent = () => {
                         value={formik.values.email} name="email" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" />
                     <small>{formik.errors.email}</small>
                 </div>
-                <div>
-                    <div className="mb-4">
-                        <label htmlFor="nameChild">Nom de l'enfant</label>
-                        <input type="text" onChange={formik.handleChange}
-                            value={formik.values.nameChild} name="nameChild" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" />
-                        <small>{formik.errors.nameChild}</small>
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="birthday">Date de naissance de l'enfant</label>
-                        <input type="text" onChange={formik.handleChange}
-                            value={formik.values.birthday} name="birthday" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" />
-                        <small>{formik.errors.birthday}</small>
-                    </div>
-                    <div className="mb-4">
-                        <label htmlFor="classChild">Classe de l'enfant</label>
-                        <input type="text" onChange={formik.handleChange}
-                            value={formik.values.classChild} name="classChild" className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" />
-                        <small>{formik.errors.birthday}</small>
-                    </div>
-                </div>
-                <div className='mt-10 flex gap-6'>
-                    <AddCHildButton />
-                    <div>
-                        <ButtonRemoveChild />
-                    </div>
+                <div className='mt-10'>
+                    <AddDisciplineButton />
                 </div>
                 <div className='mt-10'>
-                    <OrangeFullButton type="submit">VALIDER</OrangeFullButton>
+                    <BlueFullButton type="submit">VALIDER</BlueFullButton>
                 </div>
+                
             </form >
         </>
     )

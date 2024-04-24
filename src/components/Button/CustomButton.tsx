@@ -85,6 +85,20 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
+     //Bouton full bleu
+     export const BlueFullButton = styled(Button)({
+      color: "white",
+      border: "2px solid #0FA3B1",
+      borderRadius: "10px",
+      width: "384px",
+      height: "40px",
+      backgroundColor: "#0FA3B1",
+      '&:hover': {
+        backgroundColor: "#0FA3B1",
+        borderColor: "#0FA3B1",
+      },
+    }) as typeof Button;
+
 
   //Bouton bleu ajouter un enfant
   export const ButtonAddChild = styled(Button)({
@@ -92,6 +106,26 @@ export const OrangeButton = styled(Button)({
     border: "2px solid #0FA3B1",
     borderRadius: "5px",
     width: "180px",
+    height: "40px",
+    textTransform: 'none',
+    '& .MuiSvgIcon-root': {
+      transition: 'color 0.3s',
+    },
+    "&:hover": {
+      backgroundColor: "#0FA3B1",
+      color: "white",
+      '& .MuiSvgIcon-root': {
+        color: 'white',
+      },
+    },
+  }) as typeof Button;
+
+   //Bouton bleu ajouter une matière
+   export const ButtonAddDiscipline = styled(Button)({
+    color: "black",
+    border: "2px solid #0FA3B1",
+    borderRadius: "5px",
+    width: "190px",
     height: "40px",
     textTransform: 'none',
     '& .MuiSvgIcon-root': {
