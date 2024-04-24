@@ -1,4 +1,4 @@
-import CardEvent from "../../components/Card/CardEvent";
+import CardEvent from "../../components/Card/EventCard";
 import eventInterface from "../../services/interfaces/event";
 
 const events: eventInterface[] = [
