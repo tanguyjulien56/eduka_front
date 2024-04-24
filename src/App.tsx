@@ -1,27 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-
-import NavTop from "./components/NavBar/NavTop";
-
-import NotFoundPage from "./utils/NotFoundPage";
-import PrivateRoute from "./utils/PrivateRoute";
 import HomePageSchool from "./pages/Home/HomePageSchool";
+import NavBar from "./components/NavBar/NavTopSchool";
 
 function App() {
   return (
     <>
-      <NavTop />
-      
-      <div>
+    <NavBar />
         <Routes>
           <Route path="/" element={<HomePageSchool />} />
-          <Route element={<PrivateRoute />}>
-
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        
-      </div>
     </>
   );
 }
