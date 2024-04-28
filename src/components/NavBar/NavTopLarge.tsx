@@ -38,7 +38,7 @@ export default function NavBar() {
           <MenuBurger />
         </section>
         <section className="hidden  text-gray-600 lg:flex justify-end items-center gap-8">
-          <NavLink to="/" className="nav-link flex  items-center gap-2">
+          <NavLink to="/home" className="nav-link flex  items-center gap-2">
             <HomeIcon className="nav-icon" sx={{ width: 32, height: 32 }} />
 
             <p className="nav-icon">Accueil</p>

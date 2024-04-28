@@ -11,6 +11,8 @@ import ProfilPage from "./pages/Profil/ProfilPage";
 import SearchPage from "./pages/Search/SearchPage";
 import NotFoundPage from "./utils/NotFoundPage";
 import PrivateRoute from "./utils/PrivateRoute";
+import LoginPage from "./pages/Login/LoginPage";
+
 
 function App() {
   return (
@@ -19,8 +21,9 @@ function App() {
       <NavTopLarge />
       <div>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LoginPage />} />
           <Route element={<PrivateRoute />}>
+            <Route path="/home" element={<HomePage />} />
             <Route path="/notification" element={<NotificationPage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/profil" element={<ProfilPage />} />
