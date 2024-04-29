@@ -3,6 +3,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import * as Yup from "yup";
+import { BlueButton, GreatBlueButton } from "../../components/Button/Button";
 
 //TODO FAIRE
 export default function Login() {
@@ -16,27 +17,27 @@ export default function Login() {
   });
 
   const [initialValues, setInitialValues] = useState<LoginInterface>({
-    email: '',
-    password: '',
-    rememberMe:false,
+    email: "",
+    password: "",
+    rememberMe: false,
   });
 
   // Check if credentials are stored in localStorage on component mount
-  useEffect(() => {        
-    const credentialsAsString = localStorage.getItem('credentials');
-    const credentials = (credentialsAsString)?JSON.parse(credentialsAsString):undefined;
+  useEffect(() => {
+    const credentialsAsString = localStorage.getItem("credentials");
+    const credentials = credentialsAsString
+      ? JSON.parse(credentialsAsString)
+      : undefined;
 
     if (credentials) {
-    // Update initial values based on localstorage
-    setInitialValues({
-      email: credentials.email,
-      password: credentials.password,
-      rememberMe: credentials.rememberMe
-    });
-
-  } 
+      // Update initial values based on localstorage
+      setInitialValues({
+        email: credentials.email,
+        password: credentials.password,
+        rememberMe: credentials.rememberMe,
+      });
+    }
   }, []);
-
 
   const handleSubmit = async (values: LoginInterface) => {
     try {
@@ -56,7 +57,7 @@ export default function Login() {
       if (filteredUsers && filteredUsers.length === 1) {
         console.log("vous etes bien authentifie");
         sessionStorage.setItem("token", "true");
-        localStorage.setItem('credentials',JSON.stringify(values));
+        localStorage.setItem("credentials", JSON.stringify(values));
 
         setShouldNavigate(true);
       } else {
@@ -73,8 +74,6 @@ export default function Login() {
   };
   return (
     <>
-      <h1>FORM DE LOGIN</h1>
-
       {errorAuthentification && (
         <>
           <h2>I don't know you so go and fuck yourself</h2>
@@ -86,22 +85,30 @@ export default function Login() {
         onSubmit={handleSubmit}
         enableReinitialize
       >
-        <Form>
+        <Form className="flex flex-col w-64 ml-80 mt-20 bg-transparent">
+          <div className="flex">
+            <img src="./public/logo_LoginPage.png" alt="eduka" />
+          </div>
+          <h1>Veuillez rentrer vos informations :</h1>
           <div>
             <label htmlFor="email">Email</label>
-            <Field type="email" id="email" name="email" />
+            <Field className="border rounded-md block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" type="email" id="email" name="email" />
             <ErrorMessage name="email" />
           </div>
           <div>
             <label htmlFor="password">Mot de Passe</label>
-            <Field type="password" id="password" name="password" />
+            <Field className="border rounded-md block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange" type="password" id="password" name="password" />
             <ErrorMessage name="password" />
           </div>
-          <button type="submit">Se Connecter</button>
           <label>
-                Remember Me
-                <Field type="checkbox" name="rememberMe" />
-              </label>
+            Mot de passe oublié ?
+          </label>
+          <label>
+            <Field className="border rounded-md text-decorration-color:#0FA3B1" type="checkbox" name="rememberMe" />
+            Se souvenir de moi ?
+          </label>
+          <br />
+          <BlueButton type="submit">Se Connecter</BlueButton>
         </Form>
       </Formik>
       {shouldNavigate && <Navigate to="/home" />}

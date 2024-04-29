@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 
-//Grand Bouton bleu
+//Great Blue Button (blue on :hover)
 export const GreatBlueButton = styled(Button)({
   color: "black",
   border: "2px solid #0FA3B1",
@@ -15,7 +15,7 @@ export const GreatBlueButton = styled(Button)({
   },
 }) as typeof Button;
 
-//Bouton bleu taille normale
+//Blue Button normal size (bleu on :hover)
 export const BlueButton = styled(Button)({
   color: "black",
   border: "2px solid #0FA3B1",
@@ -28,7 +28,7 @@ export const BlueButton = styled(Button)({
   },
 }) as typeof Button;
 
-//Grand Bouton orange
+//Great Orange Button
 export const GreatOrangeButton = styled(Button)({
     color: "black",
     border: "2px solid #F7A072",
@@ -41,7 +41,7 @@ export const GreatOrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
-  //Bouton orange taille normale
+  //Orange Button normal size 
 export const OrangeButton = styled(Button)({
   color: "black",
   border: "2px solid #F7A072",
@@ -54,7 +54,7 @@ export const OrangeButton = styled(Button)({
   },
 }) as typeof Button;
 
-  //Grand Bouton orange/bleu
+  //Great orange/bleu Button
   export const GreatOrangeBleuButton = styled(Button)({
     color: "black",
     border: "2px solid #F7A072",
@@ -71,7 +71,7 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
-   //Bouton full orange
+   //Full orange Button
    export const OrangeFullButton = styled(Button)({
     color: "white",
     border: "2px solid #F7A072",
@@ -85,7 +85,7 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
-     //Bouton full bleu
+     //Full blue Button
      export const BlueFullButton = styled(Button)({
       color: "white",
       border: "2px solid #0FA3B1",
@@ -100,7 +100,7 @@ export const OrangeButton = styled(Button)({
     }) as typeof Button;
 
 
-  //Bouton bleu ajouter un enfant
+  //Blue Button add a child
   export const ButtonAddChild = styled(Button)({
     color: "black",
     border: "2px solid #0FA3B1",
@@ -120,7 +120,7 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
-   //Bouton bleu ajouter une matière
+   //Blue Button add a topic
    export const ButtonAddDiscipline = styled(Button)({
     color: "black",
     border: "2px solid #0FA3B1",
@@ -140,7 +140,7 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
-   //Bouton orange supprimer un enfant
+   //Orange Button delete a child
    export const ButtonDeleteChild = styled(Button)({
     color: "black",
     border: "2px solid #F7A072",
