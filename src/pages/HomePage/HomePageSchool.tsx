@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { GreatBlueButton, GreatOrangeButton } from "../components/Button/CustomButton";
+import { GreatBlueButton, GreatOrangeButton } from "../../components/Button/CustomButton";
 
 
 export const HomePageSchool = () => {
@@ -14,12 +14,12 @@ export const HomePageSchool = () => {
             <div className="flex flex-col items-center justify-center mt-44 gap-10">
                 <h2 className="text-xl font-semibold">Que souhaitez-vous faire ?</h2>
                 <div className="grid gap-10 lg:gap-20 lg:grid-cols-2">
-                        <NavLink
-                            to="/SchoolCreateUser">
-                            <GreatBlueButton>Créer un profil</GreatBlueButton>
-                        </NavLink>
+                    <NavLink
+                        to="/SchoolCreateUser">
+                        <GreatBlueButton>Créer un profil</GreatBlueButton>
+                    </NavLink>
                     <GreatOrangeButton>
-                            Modifier un profil
+                        Modifier un profil
                     </GreatOrangeButton>
                 </div>
             </div>

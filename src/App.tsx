@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { HomePageSchool } from "./pages/HomePageSchool";
-import { SchoolCreateUser } from "./pages/SchoolCreateUser";
+import { HomePageSchool } from "./pages/HomePage/HomePageSchool";
+import { SchoolCreateUser } from "./pages/SchoolCreateUserPage";
 import { ParentSignUpPage } from "./pages/ParentSignUpPage";
 import { TeacherSignUpPage } from "./pages/TeacherSignUpPage";
 function App() {

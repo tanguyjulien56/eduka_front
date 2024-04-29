@@ -1,44 +1,32 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { date, object, string } from 'yup';
+import { object, string } from 'yup';
 import { BlueFullButton } from '../Button/CustomButton';
 import AddDisciplineButton from '../Button/ButtonAddDiscipline';
+import { FormUserFLEInterface } from '../../utils/Interface/FormUseStateParentInterface';
 
-interface FormAddTeacherInterface {
-    firstName: string;
-    lastName: string;
-    email: string;
-    nameChild: string;
-    birthday: string;
-    classChild: string;
-}
+
 export const FormAddTeacher = () => {
 
-    const [teachers, setTeachers] = useState<FormAddTeacherInterface>({
+    const [teachers, setTeachers] = useState<FormUserFLEInterface>({
         firstName: '',
         lastName: '',
         email: '',
-        nameChild: '',
-        birthday: '',
-        classChild: '',
     });
 
     const userSchema = object({
         firstName: string().required('nom obligatoire').min(2, 'prénom trop court'),
         lastName: string().required('prénom obligatoire').min(2, 'nom trop court'),
         email: string().email('Invalid email address').required('email obligatoire'),
-        nameChild: string().required('nom obligatoire').min(2, 'nom trop court'),
-        birthday: date(),
-        classChild: string(),
     })
 
     const formik = useFormik({
         initialValues: teachers,
         validationSchema: userSchema,
-
-
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        console.log("🚀 ~ FormAddTeacher ~ values:", values)
+
+            
         },
     });
 

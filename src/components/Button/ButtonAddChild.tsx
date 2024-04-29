@@ -1,7 +1,7 @@
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { ButtonAddChild } from './CustomButton';
 
-export default function AddCHildButton() {
+export default function AddChildButton() {
   return (
     <ButtonAddChild
       variant="outlined"
