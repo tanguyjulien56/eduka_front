@@ -44,28 +44,3 @@ function App() {
 
 export default App;
 
-// function App() {
-//   return (
-//     <>
-//       <NavTop />
-//       <NavTopLarge />
-//       <div>
-//         <Routes>
-//           <Route path="/" element={<LoginPage />} />
-//           <Route element={<PrivateRoute />}>
-//             <Route path="/home" element={<HomePage />} />
-//             <Route path="/notification" element={<NotificationPage />} />
-//             <Route path="/search" element={<SearchPage />} />
-//             <Route path="/profil" element={<ProfilPage />} />
-//             <Route path="/for_you_event" element={<EventsUserPage />} />
-//             <Route path="/all_events" element={<EventsPage />} />
-//           </Route>
-//           <Route path="*" element={<NotFoundPage />} />
-//         </Routes>
-//         <NavBottom />
-//       </div>
-//     </>
-//   );
-// }
-
-// export default App;
