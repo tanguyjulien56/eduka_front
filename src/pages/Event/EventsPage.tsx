@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardEvent from "../../components/Card/EventCard";
 import ModalCategory from "../../components/Modals/ModalCategory";
 import eventInterface from "../../services/interfaces/event";
@@ -186,13 +186,21 @@ export default function EventsPage() {
   const [filteredEvents, setFilteredEvents] =
     useState<eventInterface[]>(events);
 
+  // Vérifier si les catégories sont déjà stockées dans le localStorage
+  useEffect(() => {
+    const storedCategories = localStorage.getItem("selectedCategories");
+    if (storedCategories) {
+      // Si des catégories sont déjà stockées, mettre à jour les événements en conséquence
+      const selectedCategories = JSON.parse(storedCategories);
+      updateEvents(selectedCategories);
+    }
+  }, []);
+
   // Fonction pour mettre à jour les événements en fonction des catégories sélectionnées
   const updateEvents = (selectedCategories: string[]) => {
     if (selectedCategories.length === 0) {
-      // Si aucune catégorie n'est sélectionnée, afficher tous les événements
       setFilteredEvents(events);
     } else {
-      // Filtrer les événements en fonction des catégories sélectionnées
       const updatedEvents = events.filter((event) =>
         event.tags.some((tag) => selectedCategories.includes(tag))
       );

@@ -7,21 +7,6 @@ import { useModal } from "../../services/Context/ModalContext";
 export default function NavTop() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState<boolean>(true);
-  const [hasSelectedCategories, setHasSelectedCategories] =
-    useState<boolean>(false);
-
-  useEffect(() => {
-    // Vérifie s'il y a des catégories sélectionnées dans le local storage
-    const storedCategories = localStorage.getItem("selectedCategories");
-    setHasSelectedCategories(
-      !!storedCategories && JSON.parse(storedCategories).length > 0
-    );
-  }, [localStorage.getItem("selectedCategories")]);
-
-  useEffect(() => {
-    // Réinitialiser la couleur du filtre lorsque la page change
-    setHasSelectedCategories(false);
-  }, [location]); // Utilisation de history.location.pathname
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,11 +36,7 @@ export default function NavTop() {
         </section>
         <section>
           <IconButton aria-label="filter" size="large">
-            <FilterAltIcon
-              fontSize="inherit"
-              style={{ color: hasSelectedCategories ? "#0fa3b1" : "inherit" }}
-              onClick={openModal}
-            />
+            <FilterAltIcon fontSize="inherit" onClick={openModal} />
           </IconButton>
           <IconButton aria-label="add" size="large">
             <ControlPointIcon fontSize="inherit" />

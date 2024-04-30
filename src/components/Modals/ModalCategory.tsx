@@ -10,6 +10,7 @@ export interface ModalCategoryProps {
 export default function EventsPage(props: ModalCategoryProps) {
   const { updateEvents } = props;
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const { isModalOpen, closeModal } = useModal();
 
   const eventCategories = [
     "Cagnotte",
@@ -28,18 +29,12 @@ export default function EventsPage(props: ModalCategoryProps) {
   ];
 
   useEffect(() => {
-    // Mettre à jour les données dans le local storage à chaque changement de selectedCategories
-    localStorage.setItem(
-      "selectedCategories",
-      JSON.stringify(selectedCategories)
-    );
-  }, [selectedCategories]);
-
-  const { isModalOpen, closeModal } = useModal();
-
-  if (!isModalOpen) {
-    return null;
-  }
+    const storedCategories = localStorage.getItem("selectedCategories");
+    if (storedCategories) {
+      const parsedCategories = JSON.parse(storedCategories);
+      setSelectedCategories(parsedCategories);
+    }
+  }, [isModalOpen]); // Mettre à jour les catégories sélectionnées à chaque ouverture de la modal
 
   const handleToggleCategory = (category: string) => {
     const index = selectedCategories.indexOf(category);
@@ -53,11 +48,14 @@ export default function EventsPage(props: ModalCategoryProps) {
   };
 
   const handleSubmit = () => {
-    // Mettre à jour les événements dans EventPage en fonction des catégories sélectionnées
     updateEvents(selectedCategories);
-    // Fermer la modal
+    localStorage.setItem(
+      "selectedCategories",
+      JSON.stringify(selectedCategories)
+    );
     closeModal();
   };
+
   return (
     <Box>
       {isModalOpen && (
