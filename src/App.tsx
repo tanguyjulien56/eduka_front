@@ -14,6 +14,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import LoginPage from "./pages/Login/LoginPage";
 import HideNavbar from "./components/HideNavbar/HideNavbar";
 
+
 function App() {
   return (
     <>
