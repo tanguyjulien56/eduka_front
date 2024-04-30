@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { HomePageSchool } from "./pages/HomePage/HomePageSchool";
+import { HomePageSchool } from "./pages/HomePageSchool";
 import { SchoolCreateUser } from "./pages/SchoolCreateUserPage";
 import { ParentSignUpPage } from "./pages/ParentSignUpPage";
 import { TeacherSignUpPage } from "./pages/TeacherSignUpPage";
-import { ParentTeacherSignUp } from "./pages/HomePage/Parent/ParentTeacherSignUpPage";
+import { ParentTeacherSignUp } from "./pages/ParentTeacherSignUpPage";
 function App() {
   return (
     <div>

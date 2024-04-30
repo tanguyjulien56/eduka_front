@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
+import { styled } from '@mui/system';
 
 
 //Grand Bouton bleu
@@ -160,5 +161,20 @@ export const OrangeButton = styled(Button)({
     },
   }) as typeof Button;
 
+  //Bouton Bleu selection d'une matière
+  export const BlueSelectedButton = styled(Button)({
+    color: "black",
+  border: "2px solid #0FA3B1",
+  borderRadius: "10px",
+  width: "120px",
+  height: "50px",
+  fontSize: "11px",
+  "&.selected": {
+    backgroundColor: "#0FA3B1",
+    color: "white",
+    '&:hover': {
+      backgroundColor: "#0FA3B1",
+    },
+  }}) as typeof Button;
  
   

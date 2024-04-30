@@ -1,21 +1,23 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import AddChildButton from "../../../components/Button/ButtonAddChild";
-import ButtonRemoveChild from "../../../components/Button/ButtonRemoveChild";
-import { OrangeFullButton } from "../../../components/Button/CustomButton";
-import { NavBarNewProfil } from "../../../components/NavBar/NavBarNewProfil";
-import AddDisciplineButton from "../../../components/Button/ButtonAddDiscipline";
-
-
-import { FormUserFLEInterface } from "../../../utils/Interface/FormUseStateParentInterface";
-import { FormChildInterface } from "../../../utils/Interface/FormUseStateChildInterface";
-
+import AddChildButton from "../components/Button/ButtonAddChild";
+import ButtonRemoveChild from "../components/Button/ButtonRemoveChild";
+import { OrangeFullButton } from "../components/Button/CustomButton";
+import { NavBarNewProfil } from "../components/NavBar/NavBarNewProfil";
+import AddDisciplineButton from "../components/Button/ButtonAddDiscipline";
+import { FormUserFLEInterface } from "../utils/Interface/FormUseStateParentInterface";
+import { FormChildInterface } from "../utils/Interface/FormUseStateChildInterface";
+import { ModalDiscipline } from "../components/Modal/ModalDiscipline";
+interface ParentTeacherFormInterface extends FormUserFLEInterface {
+    selectedDisciplines: string[];
+}
 export const ParentTeacherSignUp = () => {
-   
 
-    const [parents, setParents] = useState<FormUserFLEInterface>({
+
+    const [parentTeacher, setParentTeacher] = useState<ParentTeacherFormInterface>({
         firstName: '',
         lastName: '',
         email: '',
+        selectedDisciplines: []
     });
 
     const [children, setChildren] = useState<FormChildInterface[]>([
@@ -26,50 +28,52 @@ export const ParentTeacherSignUp = () => {
         },
     ]);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const [formErrors, setFormErrors] = useState<{ [key: string]: string }>({});
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
 
         if (name === 'lastName' || name === 'firstName' || name === 'email') {
-            setParents(prevParents => ({ ...prevParents, [name]: value }));
+            setParentTeacher(prevParentTeacher => ({ ...prevParentTeacher, [name]: value }));
             setFormErrors(prevErrors => ({ ...prevErrors, [name]: '' }));
         } else {
             const childIndex = Number(name.split('_')[1]);
             const childField = name.split('_')[0];
-            
+
             setChildren(prevChildren => prevChildren.map((child, index) => {
                 if (index === childIndex) {
                     return { ...child, [childField]: value };
                 }
                 return child;
             }));
-            
+
             setFormErrors(prevErrors => ({ ...prevErrors, [`child_${childIndex}_${childField}`]: '' }));
         }
     };
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+
         const errors: { [key: string]: string } = {};
 
-        if (!parents.firstName.trim()) {
+        if (!parentTeacher.firstName.trim()) {
             errors.firstName = 'Le prénom est requis.';
-        } else if (parents.firstName.trim().length < 2) {
+        } else if (parentTeacher.firstName.trim().length < 2) {
             errors.firstName = 'Le prénom doit contenir au moins 2 caractères.';
         }
 
-        if (!parents.lastName.trim()) {
+        if (!parentTeacher.lastName.trim()) {
             errors.lastName = 'Le nom est requis.';
-        } else if (parents.lastName.trim().length < 2) {
+        } else if (parentTeacher.lastName.trim().length < 2) {
             errors.lastName = 'Le nom doit contenir au moins 2 caractères.';
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!parents.email.trim()) {
+        if (!parentTeacher.email.trim()) {
             errors.email = 'L\'email est requis.';
-        } else if (!emailRegex.test(parents.email.trim())) {
+        } else if (!emailRegex.test(parentTeacher.email.trim())) {
             errors.email = 'L\'email est invalide.';
         }
 
@@ -91,21 +95,24 @@ export const ParentTeacherSignUp = () => {
 
         setFormErrors(errors);
 
-        if (Object.keys(errors).length === 0) {
-            console.log("🚀 ~ handleSubmit ~ children:", children)
-            console.log("🚀 ~ handleSubmit ~ parents:", parents)
-        }
+        if (Object.keys(errors).length === 0) { }
     };
+    const handleClickModalDiscipline = () => {
+        setIsModalOpen(true);
+    }
 
+    const handleCloseModal = (selectedDisciplines: string[]) => {
+        setIsModalOpen(false);
+        setParentTeacher(prevState => ({
+            ...prevState,
+            selectedDisciplines: selectedDisciplines
+        }));
+    }
     const handleAddChild = () => {
         if (children.length < 4) {
             setChildren(prevChildren => [
                 ...prevChildren,
-                {
-                    name: '',
-                    birthday: '',
-                    class: '',
-                },
+                { name: '', birthday: '', class: '', },
             ]);
         }
     };
@@ -113,12 +120,6 @@ export const ParentTeacherSignUp = () => {
     const handleRemoveChild = (index: number) => {
         setChildren(prevChildren => prevChildren.filter((_, i) => i !== index));
     };
-
-    const handleModalDiscipline = () => {
-        console.log("la modal est ouverte");
-        
-    };
-    
 
     return (
         <>
@@ -201,14 +202,21 @@ export const ParentTeacherSignUp = () => {
                     <div className="mt-6" onClick={handleAddChild}>
                         <AddChildButton />
                     </div>
-                    <div onClick={handleModalDiscipline}>
-                        <h3 className="mt-3 mb-3" >Renseigner des matières : </h3>
+                    <div className='mt-10' onClick={handleClickModalDiscipline}>
                         <AddDisciplineButton />
+                    </div>
+                    <div className="mt-4 flex flex-wrap">
+                        {parentTeacher.selectedDisciplines.map((discipline, index) => (
+                            <div key={index} className=" px-5 py-1 border-2 border-custom-blue rounded-lg mr-3 mb-2 mt-2">{discipline}</div>
+                        ))}
                     </div>
                     <div className="mt-10">
                         <OrangeFullButton type="submit">VALIDER</OrangeFullButton>
                     </div>
                 </form>
+                {isModalOpen && (
+                    <ModalDiscipline onClose={handleCloseModal} selectedDisciplines={parentTeacher.selectedDisciplines} />
+                )}
             </div>
         </>
     );

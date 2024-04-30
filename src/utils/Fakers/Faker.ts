@@ -1,6 +1,6 @@
 
 
-const eventDiscipline = [
+export const eventDiscipline = [
     "Mathématiques",
     "Arts plastiques",
     "Français",

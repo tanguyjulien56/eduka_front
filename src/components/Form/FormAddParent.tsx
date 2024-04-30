@@ -133,7 +133,7 @@ export const FormAddParent = () => {
                         onChange={handleChange}
                         className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                     />
-                    {formErrors.lastName && <p className="text-red-500">{formErrors.lastName}</p>}
+                    {formErrors.lastName && <p className="text-custom-orange">{formErrors.lastName}</p>}
                 </div>
                 <div className="mb-4">
                     <label htmlFor="firstName">Prénom</label>
@@ -143,7 +143,7 @@ export const FormAddParent = () => {
                         onChange={handleChange}
                         className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                     />
-                    {formErrors.firstName && <p className="text-red-500">{formErrors.firstName}</p>}
+                    {formErrors.firstName && <p className="text-custom-orange">{formErrors.firstName}</p>}
                 </div>
                 <div className="mb-4">
                     <label htmlFor="email">Email</label>
@@ -153,7 +153,7 @@ export const FormAddParent = () => {
                         onChange={handleChange}
                         className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                     />
-                    {formErrors.email && <p className="text-red-500">{formErrors.email}</p>}
+                    {formErrors.email && <p className="text-custom-orange">{formErrors.email}</p>}
                 </div>
                 {children.map((child, index) => (
                     <div key={index}>
@@ -166,7 +166,7 @@ export const FormAddParent = () => {
                                 onChange={handleChange}
                                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                             />
-                            {formErrors[`child_${index}_name`] && <p className="text-red-500">{formErrors[`child_${index}_name`]}</p>}
+                            {formErrors[`child_${index}_name`] && <p className="text-custom-orange">{formErrors[`child_${index}_name`]}</p>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor={`birthday${index + 1}`}>Date de naissance de l'enfant {index + 1}</label>
@@ -177,7 +177,7 @@ export const FormAddParent = () => {
                                 onChange={handleChange}
                                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                             />
-                            {formErrors[`child_${index}_birthday`] && <p className="text-red-500">{formErrors[`child_${index}_birthday`]}</p>}
+                            {formErrors[`child_${index}_birthday`] && <p className="text-custom-orange">{formErrors[`child_${index}_birthday`]}</p>}
                         </div>
                         <div className="mb-4">
                             <label htmlFor={`classChild${index + 1}`}>Classe de l'enfant {index + 1}</label>
@@ -188,7 +188,7 @@ export const FormAddParent = () => {
                                 onChange={handleChange}
                                 className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-400 rounded-lg bg-gray-50 focus:ring-custom-orange focus:border-custom-orange"
                             />
-                            {formErrors[`child_${index}_class`] && <p className="text-red-500">{formErrors[`child_${index}_class`]}</p>}
+                            {formErrors[`child_${index}_class`] && <p className="text-custom-orange">{formErrors[`child_${index}_class`]}</p>}
                         </div>
                         {index > 0 && (
                             <div onClick={() => handleRemoveChild(index)}>

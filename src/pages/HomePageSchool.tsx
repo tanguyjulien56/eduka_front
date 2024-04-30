@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { GreatBlueButton, GreatOrangeButton } from "../../components/Button/CustomButton";
+import { GreatBlueButton, GreatOrangeButton } from "../components/Button/CustomButton";
 
 
 export const HomePageSchool = () => {
