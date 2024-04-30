@@ -1,10 +1,10 @@
 import { useState } from "react";
 import NavToggle from "../../components/NavBar/NavToggle";
+import NavTop from "../../components/NavBar/NavTop";
 import EventsPage from "../Event/EventsPage";
 import EventsUserPage from "../Event/EventsUserPage";
-import NavTop from "../../components/NavBar/NavTop";
 
-export default function HomePage() {
+export default function HomePageParent() {
   const [selectedTab, setSelectedTab] = useState<string>("ForYou");
 
   const handleTabChange = (tab: string) => {

@@ -5,7 +5,7 @@ import { Avatar } from "@mui/material";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
-export default function NavBar() {
+export default function NavTopLarge() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState<boolean>(true);
 
@@ -26,7 +26,7 @@ export default function NavBar() {
       <nav
         className={`fixed text-sm top-0 bg-white left-0 right-0 w-full flex justify-between items-center py-5 px-10 transition-transform duration-300 ${
           visible
-            ? "transform translate-y-0 z-50"
+            ? "transform translate-y-0 z-10"
             : "transform -translate-y-full z-0"
         }`}
       >

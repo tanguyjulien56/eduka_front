@@ -2,10 +2,26 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useModal } from "../../services/Context/ModalContext";
 
-export default function NavBar() {
+export default function NavTop() {
   const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
   const [visible, setVisible] = useState<boolean>(true);
+  const [hasSelectedCategories, setHasSelectedCategories] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    // Vérifie s'il y a des catégories sélectionnées dans le local storage
+    const storedCategories = localStorage.getItem("selectedCategories");
+    setHasSelectedCategories(
+      !!storedCategories && JSON.parse(storedCategories).length > 0
+    );
+  }, [localStorage.getItem("selectedCategories")]);
+
+  useEffect(() => {
+    // Réinitialiser la couleur du filtre lorsque la page change
+    setHasSelectedCategories(false);
+  }, [location]); // Utilisation de history.location.pathname
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,24 +34,30 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
+  const { openModal } = useModal();
+
   return (
     <div className="lg:hidden">
       <div className="h-20 " />
       <nav
         className={`fixed top-0 bg-white left-0 right-0 w-full flex justify-end items-center py-5 px-4 transition-transform duration-300 ${
           visible
-            ? "transform translate-y-0 z-50"
+            ? "transform translate-y-0 z-10"
             : "transform -translate-y-full z-0"
         }`}
       >
-        <section className="absolute left-1/2 transform -translate-x-1/2 flex justify-center h-10 z-50">
+        <section className="absolute left-1/2 transform -translate-x-1/2 flex justify-center h-10 z-10">
           <img src="./public/logo.png" alt="eduka" />
         </section>
         <section>
-          <IconButton aria-label="delete" size="large">
-            <FilterAltIcon fontSize="inherit" />
+          <IconButton aria-label="filter" size="large">
+            <FilterAltIcon
+              fontSize="inherit"
+              style={{ color: hasSelectedCategories ? "#0fa3b1" : "inherit" }}
+              onClick={openModal}
+            />
           </IconButton>
-          <IconButton aria-label="delete" size="large">
+          <IconButton aria-label="add" size="large">
             <ControlPointIcon fontSize="inherit" />
           </IconButton>
         </section>

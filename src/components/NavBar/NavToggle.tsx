@@ -2,6 +2,7 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import { useModal } from "../../services/Context/ModalContext";
 
 interface NavTogglePropsInterface {
   onTabChange: (tab: string) => void;
@@ -11,6 +12,8 @@ interface NavTogglePropsInterface {
 export default function NavToggle(props: NavTogglePropsInterface) {
   const { onTabChange, activeTab } = props;
   const [isFixed, setIsFixed] = useState<boolean>(false);
+  const [hasSelectedCategories, setHasSelectedCategories] =
+    useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +26,38 @@ export default function NavToggle(props: NavTogglePropsInterface) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const { openModal } = useModal();
+
+  useEffect(() => {
+    // Vérifie si des filtres sont appliqués lors du chargement initial du composant
+    const storedCategories = localStorage.getItem("selectedCategories");
+    setHasSelectedCategories(
+      !!storedCategories && JSON.parse(storedCategories).length > 0
+    );
+  }, []);
+
+  useEffect(() => {
+    // Vérifie si des filtres sont appliqués lors de chaque changement de page
+    const storedCategories = localStorage.getItem("selectedCategories");
+    setHasSelectedCategories(
+      !!storedCategories && JSON.parse(storedCategories).length > 0
+    );
+  }, [props.activeTab]); // Réagit aux changements de page
+
+  useEffect(() => {
+    // Vérifie s'il y a des catégories sélectionnées dans le local storage
+    const storedCategories = localStorage.getItem("selectedCategories");
+    setHasSelectedCategories(
+      !!storedCategories && JSON.parse(storedCategories).length > 0
+    );
+  }, [localStorage.getItem("selectedCategories")]);
+
+  // Écouteur pour détecter les changements d'URL
+  useEffect(() => {
+    // Réinitialiser la couleur du filtre lorsque la page change
+    setHasSelectedCategories(false);
+  }, [location]); // Utilisation de history.location.pathname
 
   return (
     <nav
@@ -50,10 +85,14 @@ export default function NavToggle(props: NavTogglePropsInterface) {
         </a>
       </section>
       <section className="hidden lg:flex gap-2 items-center">
-        <IconButton aria-label="delete" size="large">
-          <FilterAltIcon fontSize="inherit" />
+        <IconButton aria-label="filter" size="large">
+          <FilterAltIcon
+            fontSize="inherit"
+            style={{ color: hasSelectedCategories ? "#0fa3b1" : "inherit" }}
+            onClick={openModal}
+          />
         </IconButton>
-        <IconButton aria-label="delete" size="large">
+        <IconButton aria-label="filter" size="large">
           <ControlPointIcon fontSize="inherit" />
         </IconButton>
       </section>

@@ -22,7 +22,7 @@ export default function CardEvent(props: CardEventPropsInterface) {
   }, [textRef]);
 
   return (
-    <Card className="relative mx-2 my-2 p-2">
+    <Card variant="outlined" className="relative shadow-md m-2 p-2">
       <section className="flex gap-3 pb-2">
         <img
           className="hidden lg:block w-32 h-32 object-cover rounded-lg shadow-md"
