@@ -30,6 +30,6 @@ export default {
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
 .env : 
-REACT_APP_MAPBOX_ACCESS_TOKEN 
-VITE_API_BASE_URL
-SECRET_KEY
+- REACT_APP_MAPBOX_ACCESS_TOKEN 
+- VITE_API_BASE_URL
+- SECRET_KEY
