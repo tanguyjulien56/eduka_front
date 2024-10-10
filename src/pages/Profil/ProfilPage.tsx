@@ -6,6 +6,7 @@ import NavToggleProfil from "../../components/NavBar/NavToggleProfil";
 import PersonalDataProfile from "../../components/PersonalData/PersonalDataProfile";
 import MyEventsPage from "../Event/MyEventsPage";
 import MyParticipationEventsPage from "../Event/MyparticipationEventsPage";
+import NavTopLarge from "../../components/NavBar/NavTopLarge";
 
 export default function HomePageParent() {
   const [selectedTab, setSelectedTab] = useState<string>("my_events");
@@ -16,6 +17,7 @@ export default function HomePageParent() {
 
   return (
     <>
+      <NavTopLarge />
       <NavBarProfil />
       <div className="pb-20 ">
         <PersonalDataProfile />

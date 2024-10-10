@@ -1,6 +1,3 @@
-import ControlPointIcon from "@mui/icons-material/ControlPoint";
-import FilterAltIcon from "@mui/icons-material/FilterAlt";
-import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useModal } from "../../services/Context/ModalContext";
 
@@ -72,19 +69,6 @@ export default function NavToggle(props: NavTogglePropsInterface) {
         >
           Particpations
         </a>
-      </section>
-
-      {/* Section des boutons d'action */}
-      <section className="hidden lg:flex gap-2 items-center">
-        <IconButton aria-label="filter" size="large" onClick={openModal}>
-          <FilterAltIcon
-            fontSize="inherit"
-            style={{ color: hasSelectedCategories ? "#0fa3b1" : "inherit" }}
-          />
-        </IconButton>
-        <IconButton aria-label="filter" size="large" onClick={openTypeEvent}>
-          <ControlPointIcon fontSize="inherit" />
-        </IconButton>
       </section>
     </nav>
   );

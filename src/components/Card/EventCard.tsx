@@ -31,10 +31,13 @@ export default function CardEvent(props: CardEventPropsInterface) {
 
   return (
     <Card
-      sx={{ maxWidth: 400 }}
+      sx={{ maxWidth: 400, maxHeight: 500 }}
       variant="outlined"
-      className="relative shadow-md "
+      className="relative shadow-md h-auto"
     >
+      <p className="absolute right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-50 p-1 rounded-sm bg-white opacity-70">
+        {formatRelativeDate(event.start_date)}
+      </p>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -47,15 +50,15 @@ export default function CardEvent(props: CardEventPropsInterface) {
         />
 
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {event.title}
           </Typography>
-          <div className="flex justify-between py-2 text-sm text-gray-700">
+
+          <div className="flex flex-col justify-between py-2 text-sm text-gray-700">
             <p>
               <LocationOnIcon />{" "}
               {event.address?.city ? event.address.city : "Non défini"}
             </p>
-            <p>{formatRelativeDate(event.start_date)}</p>
           </div>
           <p
             ref={textRef}
@@ -77,12 +80,13 @@ export default function CardEvent(props: CardEventPropsInterface) {
             </div>
           </section>
         </CardContent>
-        <Button
-          style={{ backgroundColor: "#ffff", color: "#0fa3b1", fontSize: 14 }}
-        >
-          Voir plus
-        </Button>
       </CardActionArea>
+      <Button
+        className="absolute bottom-0 right-0"
+        style={{ backgroundColor: "#ffff", color: "#0fa3b1", fontSize: 14 }}
+      >
+        Voir plus
+      </Button>
     </Card>
   );
 }
