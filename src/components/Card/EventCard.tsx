@@ -23,7 +23,7 @@ export default function CardEvent(props: CardEventPropsInterface) {
   const { event } = props;
 
   return (
-    <div className="relative h-auto grid grid-rows-4  bg-white shadow-sm border border-slate-200 rounded-lg w-auto">
+    <div className="relative h-auto w-full grid grid-rows-4 bg-white shadow-sm border border-slate-200 rounded-lg ">
       {/* Image Section */}
       <div className="relative row-span-2 h-40 m-2.5 overflow-hidden rounded-md">
         <div className="absolute right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-5 p-1 rounded-sm bg-white opacity-70">
