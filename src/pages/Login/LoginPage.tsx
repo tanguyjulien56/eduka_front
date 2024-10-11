@@ -13,10 +13,12 @@ const LoginPage: React.FC = () => {
     useState<boolean>(false);
   const { setUser } = useUser();
 
+  // Vérifier les informations de connexion enregistrées
+  const rememberMeCredentials = localStorage.getItem("rememberMeCredentials");
   const initialValues: LoginInterface = {
-    email: "",
+    email: rememberMeCredentials ? JSON.parse(rememberMeCredentials).email : "",
     password: "",
-    rememberMe: false,
+    rememberMe: rememberMeCredentials ? true : false,
   };
 
   const validationSchema = Yup.object({
@@ -39,11 +41,19 @@ const LoginPage: React.FC = () => {
         setUser(response.user);
         console.log("Connexion réussie :", response.user);
         localStorage.setItem("user", JSON.stringify(response.user));
+
+        // Gérer "Se souvenir de moi"
         if (values.rememberMe) {
-          localStorage.setItem("rememberMeCredentials", JSON.stringify(values));
+          localStorage.setItem(
+            "rememberMeCredentials",
+            JSON.stringify({
+              email: values.email,
+            })
+          );
         } else {
           localStorage.removeItem("rememberMeCredentials");
         }
+
         setRedirectUrl(response.redirect_url);
       } else {
         setErrorAuthentification(true);
@@ -53,7 +63,7 @@ const LoginPage: React.FC = () => {
       setErrorAuthentification(true);
     }
   };
-  console.log("redirectUrl :", redirectUrl);
+
   if (redirectUrl) {
     return <Navigate to={redirectUrl} />;
   }

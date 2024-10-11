@@ -67,3 +67,10 @@
 .input-custom-orange:focus {
   border: 2px solid #f7a072;
 }
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limiter à 3 lignes */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

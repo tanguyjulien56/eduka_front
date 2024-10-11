@@ -1,15 +1,18 @@
+// import {
+//   Avatar,
+//   Button,
+//   Card,
+//   CardActionArea,
+//   CardContent,
+//   CardMedia,
+//   IconButton,
+//   Typography,
+// } from "@mui/material";
+
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import {
-  Avatar,
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { useEffect, useRef } from "react";
+import { Avatar } from "@mui/material";
+
 import { FormattedEventCardInterface } from "../../services/interfaces/event";
 import { formatRelativeDate } from "../../utils/CalculRelative/FormatRelativeDate";
 
@@ -18,75 +21,60 @@ interface CardEventPropsInterface {
 }
 export default function CardEvent(props: CardEventPropsInterface) {
   const { event } = props;
-  const textRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (
-      textRef.current &&
-      "webkitLineClamp" in document.documentElement.style
-    ) {
-      textRef.current.classList.add("line-clamp-3");
-    }
-  }, [textRef]);
 
   return (
-    <Card
-      sx={{ maxWidth: 400, maxHeight: 500 }}
-      variant="outlined"
-      className="relative shadow-md h-auto"
-    >
-      <p className="absolute right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-50 p-1 rounded-sm bg-white opacity-70">
-        {formatRelativeDate(event.start_date)}
-      </p>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          image={
+    <div className="relative h-auto grid grid-rows-4  bg-white shadow-sm border border-slate-200 rounded-lg w-auto">
+      {/* Image Section */}
+      <div className="relative row-span-2 h-40 m-2.5 overflow-hidden rounded-md">
+        <div className="absolute right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-5 p-1 rounded-sm bg-white opacity-70">
+          <LocationOnIcon />
+          <span>{event.address?.city ? event.address.city : "Non défini"}</span>
+        </div>
+        <img
+          className="object-cover w-full h-full"
+          src={
             event.picture
               ? event.picture
-              : "https://www.istockphoto.com/photo/happy-children-playing-together-in-park-gm1330261325-413735656?utm_source=pixabay&utm_medium=affiliate&utm_campaign=SRP_image_sponsored&utm_content=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fsortie%2520extrascolaire%2F&utm_term=sortie+extrascolaire"
+              : "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80"
           }
-          style={{ height: 200, width: "100%", objectFit: "cover" }}
+          alt="card-image"
         />
+      </div>
 
-        <CardContent>
-          <Typography gutterBottom variant="h6" component="div">
-            {event.title}
-          </Typography>
+      {/* Text Section */}
+      <div className="row-span-3 px-4 flex flex-col">
+        <div className="flex items-center gap-2 text-sm text-slate-600">
+          <CalendarTodayIcon sx={{ width: 24, height: 24 }} />
+          <p> {formatRelativeDate(event.start_date)}</p>
+        </div>
+        <h6 className=" text-slate-800 text-xl font-semibold my-3">
+          {event.title}
+        </h6>
+        <p className="text-slate-600 leading-normal font-light line-clamp-3 h-[4.5rem]">
+          {event.description}
+        </p>
+        <section className="flex flex-col text-sm text-slate-600 font-light my-4 gap-1">
+          <div className="flex items-center gap-2">
+            <Avatar
+              alt="profil_picture"
+              src={event.user.profil_picture}
+              sx={{ width: 24, height: 24 }}
+            />
 
-          <div className="flex flex-col justify-between py-2 text-sm text-gray-700">
-            <p>
-              <LocationOnIcon />{" "}
-              {event.address?.city ? event.address.city : "Non défini"}
-            </p>
+            <p>de {event.user.firstname}</p>
           </div>
-          <p
-            ref={textRef}
-            className="text-sm text-gray-700 dark:text-gray-400 overflow-hidden pr-8 h-10 lg:h-20 "
-          >
-            {event.description}
-          </p>
+        </section>
+      </div>
 
-          <section className="flex justify-between items-center text-sm text-gray-700 py-2">
-            <div className="flex items-center">
-              <IconButton size="small">
-                <Avatar
-                  alt="profil_picture"
-                  src={event.user.profil_picture}
-                  sx={{ width: 24, height: 24 }}
-                />
-              </IconButton>
-              <p>de {event.user.firstname}</p>
-            </div>
-          </section>
-        </CardContent>
-      </CardActionArea>
-      <Button
-        className="absolute bottom-0 right-0"
-        style={{ backgroundColor: "#ffff", color: "#0fa3b1", fontSize: 14 }}
-      >
-        Voir plus
-      </Button>
-    </Card>
+      {/* Button Section */}
+      {/* <div className="row-span-1 flex inline-flex items-end px-4 pb-4">
+        <button
+          className="rounded-md bg-custom-blue py-2 px-4 w-full text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          type="button"
+        >
+          Lire Plus
+        </button>
+      </div> */}
+    </div>
   );
 }

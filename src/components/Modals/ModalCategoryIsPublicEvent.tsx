@@ -40,10 +40,10 @@ export default function TypeEventPage() {
   return (
     <Box>
       {isCategoryPublicEventOpen && (
-        <section className="absolute top-0 left-0 right-0 bottom-0 bg-opacity-20 bg-black backdrop-filter backdrop-blur-sm  z-[800]"></section>
+        <section className="fixed top-0 left-0 right-0 bottom-0 bg-opacity-20 bg-black backdrop-filter backdrop-blur-sm  z-[800]"></section>
       )}
       {isCategoryPublicEventOpen && (
-        <section className="absolute bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[900] w-full max-w-md  border rounded-lg shadow-sm m-auto ">
+        <section className="fixed bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[900] w-full max-w-md  border rounded-lg shadow-sm m-auto ">
           <article className=" py-2 px-2">
             <IconButton className="py-2" aria-label="delete" size="large">
               <CloseIcon

@@ -3,7 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/**//*{js,jsx?ts?tsx}",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}", // Corrige la syntaxe ici
   ],
   theme: {
     extend: {
@@ -13,5 +13,8 @@ export default {
       },
     },
   },
-  plugins: [require("flowbite/plugin")],
+  plugins: [
+    require("flowbite/plugin"),
+    require("@tailwindcss/line-clamp"), // Corrige la syntaxe ici
+  ],
 };
