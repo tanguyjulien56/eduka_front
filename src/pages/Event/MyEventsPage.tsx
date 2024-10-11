@@ -121,15 +121,15 @@ export default function MyEventsPage() {
   };
 
   return (
-    <div className="  flex flex-col-reverse gap-4 justify-start mx-2 mt-4 lg:grid grid-cols-3 ">
-      <section className="col-span-2 grid  max-w-screen-xl  mx-auto gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
+    <div className="  flex flex-col-reverse max-w-screen-xl justify-center gap-4  mx-2 mt-4 lg:grid grid-cols-5 lg:m-auto  ">
+      <section className="col-span-3 pt-3 max-w-screen-md  mx-auto grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
         {filteredEvents.map((event, index) => (
           <CardEvent key={index} event={event as FormattedEventCardInterface} />
         ))}
         <ModalFilterTags updateEvents={handleCategorySelection} />
       </section>
-      <section className="hidden lg:block">
-        <div className=" col-span-1 lg:sticky lg:top-0 lg:h-screen">
+      <section className=" hidden lg:block lg:col-span-2">
+        <div className=" lg:sticky lg:top-0 bottom-0 lg:h-screen lg:w-full">
           <Map
             initialViewState={viewport}
             style={{ width: "100%", height: "100%" }}
@@ -170,7 +170,7 @@ export default function MyEventsPage() {
                   <img
                     src={selectedEvent.picture}
                     alt={selectedEvent.title}
-                    style={{ width: "100%", height: "100%" }}
+                    style={{ width: "100px", height: "100px" }}
                   />
                   <h3>{selectedEvent.title}</h3>
                 </div>
