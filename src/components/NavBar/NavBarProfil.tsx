@@ -30,19 +30,14 @@ export const NavBarProfil = () => {
       }`}
     >
       <IconButton aria-label="delete" size="large" onClick={openLogOut}>
-        <LogoutOutlinedIcon
-          style={{
-            color: "#5f6369",
-            fontSize: "2rem",
-            transform: "rotate(180deg)",
-          }}
-        />
+        <LogoutOutlinedIcon fontSize="inherit"
+          />
       </IconButton>
       <h2 className="text-2xl">Profil</h2>
-      <NavLink className="mr-3 sm:mr-5 lg:mr-10" to={"/edit_my_profil"}>
-        <SettingsOutlinedIcon
-          style={{ color: "#5f6369", fontSize: "2.5rem" }}
-        />
+      <NavLink to={"/edit_my_profil"}>
+        <IconButton aria-label="settings" size="large">
+          <SettingsOutlinedIcon fontSize="inherit" />
+        </IconButton>
       </NavLink>
     </div>
   );

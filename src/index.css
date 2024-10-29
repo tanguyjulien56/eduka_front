@@ -74,3 +74,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.mapboxgl-popup-close-button {
+  @apply text-2xl; /* Utilisez des classes Tailwind pour la taille du texte */
+  line-height: 1.5rem;
+  color: #2e2e2e;
+}

@@ -1,30 +1,20 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useModal } from "../../services/Context/ModalContext";
 import { EventInterface } from "../../services/interfaces/event";
-import { getFakerPublicEventData } from "../../utils/Axios/axios.ts";
 import { BlueButton } from "../Button/CustomButton";
 
 export default function TypeEventPage() {
   const { isCategoryPublicEventOpen, closeCategoryPublicEvent } = useModal();
-  const [publicEvents, setPublicEvents] = useState<string[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Récupérer les données des types d'événements via Axios
-        const data = await getFakerPublicEventData();
-        if (data) {
-          setPublicEvents(data.datas);
-        }
-      } catch (error) {
-        console.error("Error fetching type events:", error);
-      }
-    };
 
-    fetchData();
-  }, []);
+  const publicEvents: string[] = [
+    "Sortie loisirs",
+    "Cagnotte",
+    "Covoiturage",
+    "Cours particuliers",
+    "Sondage",
+  ];
 
   const handleEventSelection = (category: string) => {
     // Stocker la valeur de l'événement sélectionné dans le localStorage

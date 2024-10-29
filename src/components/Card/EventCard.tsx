@@ -25,8 +25,8 @@ export default function CardEvent(props: CardEventPropsInterface) {
   return (
     <div className="relative w-full  grid grid-rows-4 h-fit  bg-white shadow-sm border border-slate-200 rounded-lg ">
       {/* Image Section */}
-      <div className="relative row-span-2 h-40 m-2.5 overflow-hidden rounded-md">
-        <div className="absolute right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-5 p-1 rounded-sm bg-white opacity-70">
+      <div className="relative row-span-2  h-40 m-2.5 overflow-hidden rounded-md">
+        <div className="absolute flex items-center right-2 top-2 text-sm text-gray-700 dark:text-gray-400 z-5 p-1 rounded bg-white opacity-70">
           <LocationOnIcon />
           <span>{event.address?.city ? event.address.city : "Non défini"}</span>
         </div>

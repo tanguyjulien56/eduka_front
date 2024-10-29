@@ -1,9 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
 import { useModal } from "../../services/Context/ModalContext";
 import { TypeInterface } from "../../services/interfaces/event";
-import { getFakerTypeEventsData } from "../../utils/Axios/axios";
 import { BlueButton, OrangeButton } from "../Button/CustomButton";
 
 export default function TypeEventPage() {
@@ -13,7 +11,8 @@ export default function TypeEventPage() {
     openCategoryPublicEvent,
     openCategoryPrivateEvent,
   } = useModal();
-  const [typeEvents, setTypeEvents] = useState<string[]>([]);
+
+  const typeEvents: string[] = ["Public", "Privé"];
 
   const handleButtonClick = (is_public: boolean) => {
     const storedDataEvent: TypeInterface = {
@@ -29,21 +28,6 @@ export default function TypeEventPage() {
       openCategoryPrivateEvent();
     }
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Récupérer les données des types d'événements via Axios
-        const data = await getFakerTypeEventsData();
-        if (data) {
-          setTypeEvents(data.datas);
-        }
-      } catch (error) {
-        console.error("Error fetching type events:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <Box>

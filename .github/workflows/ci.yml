@@ -1,0 +1,29 @@
+# .github/workflows/ci.yml
+name: CI/CD Pipeline - Production
+
+# Déclenchement uniquement sur la branche prod
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Log in to GitHub Container Registry
+        env:
+          CR_PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build and push Docker image
+        env:
+          URL_BACK_PROD: ${{ secrets.URL_BACK_PROD }}
+        run: |
+          IMAGE_NAME=ghcr.io/${{ github.repository }}/front:prod-${{ github.sha }}
+          docker build --build-arg BASE_BACK_URL=$URL_BACK_PROD -t $IMAGE_NAME .
+          docker push $IMAGE_NAME

@@ -3,9 +3,7 @@ import { Box, IconButton } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useModal } from "../../services/Context/ModalContext";
 
-import { useEffect, useState } from "react";
 import { EventInterface } from "../../services/interfaces/event";
-import { getFakerPrivateEventData } from "../../utils/Axios/axios.ts";
 import { OrangeButton } from "../Button/CustomButton";
 
 const handleEventSelection = (category: string) => {
@@ -20,22 +18,14 @@ const handleEventSelection = (category: string) => {
 };
 export default function TypeEventPage() {
   const { isCategoryPrivateEventOpen, closeCategoryPrivateEvent } = useModal();
-  const [privateEvents, setPrivateEvents] = useState<string[]>([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        // Récupérer les données des types d'événements via Axios
-        const data = await getFakerPrivateEventData();
-        if (data) {
-          setPrivateEvents(data.datas);
-        }
-      } catch (error) {
-        console.error("Error fetching type events:", error);
-      }
-    };
 
-    fetchData();
-  }, []);
+  const privateEvents: string[] = [
+    "Sortie loisirs",
+    "Anniversaire",
+    "Covoiturage",
+    "Cours particuliers",
+  ];
+
   return (
     <Box>
       {isCategoryPrivateEventOpen && (

@@ -1,12 +1,11 @@
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
-import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { getFakeEventsData } from "../../utils/Axios/axios";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import { fetchPublicEvents } from "../../services/api/events";
 import { EventsInterface } from "../../services/interfaces/EventsInterface";
-
 
 export const NavBarEvent = () => {
   const [fakeEvent, setFakeEvent] = useState<EventsInterface[]>([]);
@@ -14,9 +13,11 @@ export const NavBarEvent = () => {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const data = await getFakeEventsData();
+        const data = await fetchPublicEvents();
         if (data) {
-          const specificEvent = data.datas.filter(event => event.id === "1q2w3e4r5t6y");
+          const specificEvent = data.datas.filter(
+            (event : EventsInterface) => event.id === "1q2w3e4r5t6y"
+          );
           setFakeEvent(specificEvent);
         }
       } catch (error) {
@@ -29,7 +30,9 @@ export const NavBarEvent = () => {
 
   return (
     <div className="flex justify-between items-center py-5 px-4 border-b-2">
-      <NavLink to="/home_page_parent"> {/*penser a rediriger où il faut @dev*/}
+      <NavLink to="/home_page_parent">
+        {" "}
+        {/*penser a rediriger où il faut @dev*/}
         <IconButton aria-label="delete" size="large">
           <CloseIcon />
         </IconButton>
@@ -38,7 +41,13 @@ export const NavBarEvent = () => {
         {fakeEvent.map((event) => (
           <div className="mr-14" key={event.id}>
             <p className="text-2xl">{event.title}</p>
-            <p className="">{format(new Date(event.created_at), "EEEE dd MMMM yyyy 'à' HH:mm", { locale: fr })}</p>
+            <p className="">
+              {format(
+                new Date(event.created_at),
+                "EEEE dd MMMM yyyy 'à' HH:mm",
+                { locale: fr }
+              )}
+            </p>
           </div>
         ))}
       </div>

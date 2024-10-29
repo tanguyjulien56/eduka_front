@@ -12,13 +12,13 @@ import { getFakerEventTagsData } from "../../utils/Axios/axios";
 import CounterInput from "../../utils/CounterInput";
 import ButtonAddChoice from "../Button/ButtonAddChoice";
 
+import { v4 as uuidv4 } from "uuid";
 import { createEvent } from "../../services/api/add_event";
 import { uploadImage } from "../../services/api/upload_image";
 import AddressField from "../../utils/AddressField/AdressField";
 import { ButtonAddTags } from "../Button/ButtonAddTags";
 import { BlueFullButton } from "../Button/CustomButton";
 import ModalAddTags from "../Modals/ModalAddTags";
-
 interface FormEventPropsInterface {
   onSubmit: (data: EventInterface) => void;
 }
@@ -35,7 +35,7 @@ export default function FormAddEventPublic({
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [tagsEvent, setTagsEvent] = useState<string[]>([]);
   const [choices, setChoices] = useState<string[]>(["", ""]);
-  const id = crypto.randomUUID();
+  const id = uuidv4();
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
