@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useModal } from "../../services/Context/ModalContext";
 
 interface NavTogglePropsInterface {
   onTabChange: (tab: string) => void;
@@ -9,9 +8,6 @@ interface NavTogglePropsInterface {
 export default function NavToggle(props: NavTogglePropsInterface) {
   const { onTabChange, activeTab } = props;
   const [isFixed, setIsFixed] = useState<boolean>(false);
-  const [hasSelectedCategories, setHasSelectedCategories] =
-    useState<boolean>(false);
-  const { openModal } = useModal();
 
   // Effet pour gérer le défilement de la fenêtre
   useEffect(() => {
@@ -23,27 +19,10 @@ export default function NavToggle(props: NavTogglePropsInterface) {
   }, []);
 
   // Effet pour vérifier les catégories sélectionnées lors du chargement initial
-  useEffect(() => {
-    const storedCategories = localStorage.getItem("selectedCategories");
-    setHasSelectedCategories(
-      !!storedCategories && JSON.parse(storedCategories).length > 0
-    );
-  }, []);
 
   // Effet pour vérifier les catégories sélectionnées lors de chaque changement de page
-  useEffect(() => {
-    const storedCategories = localStorage.getItem("selectedCategories");
-    setHasSelectedCategories(
-      !!storedCategories && JSON.parse(storedCategories).length > 0
-    );
-  }, [props.activeTab]);
 
   // Effet pour réinitialiser la couleur du filtre lors du changement d'URL
-  useEffect(() => {
-    setHasSelectedCategories(false);
-  }, [location]); // Utilisation de history.location.pathname
-
-  const { openTypeEvent } = useModal();
 
   return (
     <nav

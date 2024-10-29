@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import UserCardSchool from "../../components/Card/UserCardSchool";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { userInterface } from "../../services/interfaces/user";
+import { fakeUserInterface } from "../../services/interfaces/user";
 import { getFakerUsersData } from "../../utils/Axios/axios";
 
 export default function SearchBySchoolPage() {
-  const [usersData, setUsersData] = useState<userInterface[]>([]);
+  const [usersData, setUsersData] = useState<fakeUserInterface[]>([]);
   const [searchResults, setSearchResults] =
-    useState<userInterface[]>(usersData);
+    useState<fakeUserInterface[]>(usersData);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   useEffect(() => {

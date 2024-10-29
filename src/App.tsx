@@ -17,7 +17,6 @@ import SendEmailPage from "./pages/Login/SendEmailPage";
 import NotificationPage from "./pages/Notification/NotificationPage";
 import EventPrivatePage from "./pages/Profil/EventPrivatePage";
 
-import ProfilePage from "./pages/Profil/ProfilePage";
 import ProfilPage from "./pages/Profil/ProfilPage";
 import { ParentSignUpPage } from "./pages/Schools/ParentSignUpPage";
 import { ParentTeacherSignUp } from "./pages/Schools/ParentTeacherSignUpPage";
@@ -68,7 +67,7 @@ function App() {
               <Route path="/chat" element={<ChatPage />} />
               <Route path="/for_you_event" element={<EventsUserPage />} />
               <Route path="/all_events" element={<EventsPage />} />
-              <Route path="/participation" element={<ProfilePage />} />
+
               <Route path="/add_event_page" element={<AddEventPage />} />
               <Route path="/profil" element={<ProfilPage />} />
               {/* <Route path="/profil" element={<ProfilModifyPage />} /> */}

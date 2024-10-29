@@ -2,7 +2,7 @@ import { faker, fakerFR } from "@faker-js/faker";
 import LoginInterface from "../../services/interfaces/Login";
 import { CardEventInterface } from "../../services/interfaces/event";
 import eventOnChangeInterface from "../../services/interfaces/eventOnChange";
-import { userInterface } from "../../services/interfaces/user";
+import { fakeUserInterface } from "../../services/interfaces/user";
 
 export const eventDiscipline = [
   "Mathématiques",
@@ -608,7 +608,7 @@ export const fakerEventsPublicData = {
   datas: publicEventsFaker,
 };
 
-const fakerUsers: userInterface[] = [
+const fakerUsers: fakeUserInterface[] = [
   {
     id: 1,
     first_name: "Ania",

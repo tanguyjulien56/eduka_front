@@ -676,30 +676,30 @@
   dependencies:
     meow "^9.0.0"
 
-"@mapbox/search-js-core@^1.0.0-beta.21":
-  version "1.0.0-beta.21"
-  resolved "https://registry.npmjs.org/@mapbox/search-js-core/-/search-js-core-1.0.0-beta.21.tgz"
-  integrity sha512-Uc9XhZ4DVwylAdB+ZQ3bceJcmynh8C3sZAnIqVBdhz8yazaq2/wc9ciY6Cvqg2BAAzaDksDMTF8EHwNqSs9O0g==
+"@mapbox/search-js-core@^1.0.0-beta.22":
+  version "1.0.0-beta.22"
+  resolved "https://registry.npmjs.org/@mapbox/search-js-core/-/search-js-core-1.0.0-beta.22.tgz"
+  integrity sha512-uiATh3TlOOiXSMS1GYGfEHCxPWbW6mgTmChf5DQBJAd9WqMqraaFco7OaoN3M0MXgf6lquEa+1qJWP3P6s7S+w==
   dependencies:
     "@types/geojson" "^7946.0.8"
 
-"@mapbox/search-js-react@^1.0.0-beta.21":
-  version "1.0.0-beta.21"
-  resolved "https://registry.npmjs.org/@mapbox/search-js-react/-/search-js-react-1.0.0-beta.21.tgz"
-  integrity sha512-OqhlFLt6vCtcWBC12QK6Hsv9ZWjgbe49LRCGuj/LZ7qs9J4oygH1KD6PG8/vOIHb2NGJCWbSwee+YuOjdnSOOQ==
+"@mapbox/search-js-react@^1.0.0-beta.22":
+  version "1.0.0-beta.22"
+  resolved "https://registry.npmjs.org/@mapbox/search-js-react/-/search-js-react-1.0.0-beta.22.tgz"
+  integrity sha512-5ygoptfYfQCdiJ7dpp0xWp254Ilpaz57vh2qXd62Tn1Z7ZWQbiJWc8WT4QQDL/CIoO/5qMrqgNWd6qn7n1QeCw==
   dependencies:
-    "@mapbox/search-js-core" "^1.0.0-beta.21"
-    "@mapbox/search-js-web" "^1.0.0-beta.21"
+    "@mapbox/search-js-core" "^1.0.0-beta.22"
+    "@mapbox/search-js-web" "^1.0.0-beta.22"
     "@types/geojson" "^7946.0.8"
     "@types/react" "^17.0.43"
 
-"@mapbox/search-js-web@^1.0.0-beta.21":
-  version "1.0.0-beta.21"
-  resolved "https://registry.npmjs.org/@mapbox/search-js-web/-/search-js-web-1.0.0-beta.21.tgz"
-  integrity sha512-y3lkOo59m24FrW0xrpGe423iW5fyFkpzdy9nGGCYm/0BqbumOWWbz9Qb4sNTKY0KJ7PQMTO01mS1qn7oPXYr1g==
+"@mapbox/search-js-web@^1.0.0-beta.22":
+  version "1.0.0-beta.22"
+  resolved "https://registry.npmjs.org/@mapbox/search-js-web/-/search-js-web-1.0.0-beta.22.tgz"
+  integrity sha512-HVTKDFST3GUOzu35NJFRTW6IdLXyS9Jjb15tjdLrFw4qHtdqhbXAht5JUCCCvuStcyhWl30EwoS8sxm7ZZ1Kyw==
   dependencies:
     "@floating-ui/dom" "^0.5.2"
-    "@mapbox/search-js-core" "^1.0.0-beta.21"
+    "@mapbox/search-js-core" "^1.0.0-beta.22"
     "@mapbox/sphericalmercator" "^1.2.0"
     focus-trap "^6.7.3"
     no-scroll "^2.1.1"
@@ -1242,10 +1242,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^17.0.0 || ^18.0.0", "@types/react@^17.0.0 || ^18.0.0 || ^19.0.0", "@types/react@^18.3.2", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
-  version "18.3.2"
-  resolved "https://registry.npmjs.org/@types/react/-/react-18.3.2.tgz"
-  integrity sha512-Btgg89dAnqD4vV7R3hlwOxgqobUQKgx3MmrQRi0yYbs/P0ym8XozIAlkqVilPqHQwXs4e9Tf63rrCgl58BcO4w==
+"@types/react@*", "@types/react@^17.0.0 || ^18.0.0", "@types/react@^17.0.0 || ^18.0.0 || ^19.0.0", "@types/react@^18.3.12", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
+  version "18.3.12"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.3.12.tgz"
+  integrity sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
