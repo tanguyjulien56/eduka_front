@@ -1,7 +1,7 @@
-# .github/workflows/ci.yml
+
 name: CI/CD Pipeline - Production
 
-# Déclenchement uniquement sur la branche prod
+
 on:
   push:
     branches:
